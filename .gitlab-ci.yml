@@ -8,7 +8,6 @@ docker_build:
     - docker
   stage: build
   script:
-    - chmod -R 777 *
     - docker build -t android-build:latest .
     - docker run --rm -v "$PWD":/home/gradle/ android-build gradle build
   variables:
