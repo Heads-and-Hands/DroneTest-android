@@ -5,7 +5,7 @@ stages:
 
 docker_build:
   tags:
-    - shell
+    - docker
   stage: build
   script:
     - chmod -R 777 *
