@@ -1,3 +1,5 @@
+image: docker:latest
+
 stages:
   - build
 
@@ -9,3 +11,5 @@ docker_build:
     - chmod -R 777 *
     - docker build -t android-build:latest .
     - docker run --rm -v "$PWD":/home/gradle/ android-build gradle build
+  variables:
+    GIT_STRATEGY: none
