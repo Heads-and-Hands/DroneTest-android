@@ -1,0 +1,19 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Log into registry
+      docker_login:
+        registry_url: "{{ lookup('env','CI_REGISTRY') }}"
+        username: "{{ lookup('env','CI_REGISTRY_USER') }}"
+        password: "{{ lookup('env','CI_REGISTRY_PASSWORD') }}"
+
+    - name: Build gpm-doc image
+      docker_image:
+        build:
+          path: ../
+          pull: yes
+        name: "{{ lookup('env','CI_REGISTRY_IMAGE') }}/gpm-doc"
+        push: yes
+        source: build
+        force_absent: yes
+        force_source: yes
