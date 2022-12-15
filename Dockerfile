@@ -1,4 +1,4 @@
-FROM gradle:7.6.0-jdk11
+FROM --platform=linux/amd64 gradle:7.6.0-jdk11
 
 ENV SDK_URL="https://dl.google.com/android/repository/commandlinetools-linux-9123335_latest.zip" \
     ANDROID_HOME="/usr/local/android-sdk" \
@@ -23,6 +23,6 @@ RUN $ANDROID_HOME/cmdline-tools/bin/sdkmanager --install --sdk_root=$ANDROID_HOM
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
 
-COPY . /home/gradle
+#COPY . /home/gradle
 WORKDIR /home/gradle
-#RUN gradle clean --debug
+#RUN gradle clean
