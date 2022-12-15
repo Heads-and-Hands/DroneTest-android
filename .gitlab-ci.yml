@@ -5,7 +5,7 @@ stages:
 
 docker_build:
   tags:
-    - docker
+    - shell
   stage: build
   script:
     - docker build -t android-build:latest .
