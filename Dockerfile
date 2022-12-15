@@ -23,6 +23,6 @@ RUN $ANDROID_HOME/cmdline-tools/bin/sdkmanager --install --sdk_root=$ANDROID_HOM
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
 
-#COPY . /home/gradle
 WORKDIR /home/gradle
+#COPY . /home/gradle
 #RUN gradle clean
