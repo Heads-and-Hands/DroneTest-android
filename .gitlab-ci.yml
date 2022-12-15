@@ -1,6 +1,8 @@
 stages:
   - build
 
+pre_clone_script = "sudo chown -R gitlab-runner:gitlab-runner ."
+
 docker_build:
   tags:
     - shell
