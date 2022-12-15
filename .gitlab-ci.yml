@@ -7,4 +7,4 @@ docker_build:
   stage: build
   script:
     - docker build -t android-build:latest .
-    - docker push android-build:latest
+    - docker run --rm -v "$PWD":/home/gradle/ android-build gradle build
