@@ -10,5 +10,9 @@ docker_build:
   script:
     - docker build -t android-build:latest .
     - docker run --rm -v "$PWD":/home/gradle/ android-build gradle build
+  artifacts:
+    expire_in: 1h
+    paths:
+      - app/build/outputs/apk/debug/app-debug.apk
   variables:
     GIT_STRATEGY: none
