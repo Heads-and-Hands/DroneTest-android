@@ -4,8 +4,8 @@ name: default
 
 steps:
   - name: test
-    pull: if-not-exists
-    image: docker:latest
+    pull: always
+    image: docker:dind
     commands:
       - echo hello
       - docker build -t android-build:latest .
