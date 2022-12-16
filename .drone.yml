@@ -32,7 +32,7 @@ steps:
       - name: code
         path: /home/gradle
     commands:
-      - ls -al /home/gradle
+      - docker volume ls
 
   - name: Run
     pull: if-not-exists
