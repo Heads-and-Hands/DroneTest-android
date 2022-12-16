@@ -23,8 +23,8 @@ steps:
       - name: code
         path: /home/gradle
     commands:
-      - echo hello
       - docker build -t android-build:latest .
+      - docker run --rm android-build ls -al /home/gradle
 
   - name: Run
     pull: if-not-exists
@@ -35,6 +35,4 @@ steps:
       - name: code
         path: /home/gradle
     commands:
-      - ls -al /drone
-      - docker run --rm -v /home/gradle:/gradle android-build ls -al /home/gradle
-      - docker run --rm -v /home/gradle:/home/gradle android-build gradle build
+      - docker run --rm android-build gradle build
