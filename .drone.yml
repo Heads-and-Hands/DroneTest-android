@@ -23,7 +23,7 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - cd /drone/src && ls -al
+      - ls -al /drone/src
       - docker run --rm -v /drone/src:/home/gradle/ android-build ls -al /home/gradle
       - docker run --rm -v /drone/src:/home/gradle/ android-build gradle build
 
