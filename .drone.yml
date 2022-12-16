@@ -4,7 +4,8 @@ name: default
 
 steps:
   - name: test
-    image: alpine
+    image: docker:latest
     commands:
       - echo hello
-      - echo world
+      - docker build -t android-build:latest .
+      - docker run --rm -v "$PWD":/home/gradle/ android-build gradle build
