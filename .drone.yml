@@ -2,6 +2,9 @@ kind: pipeline
 type: docker
 name: default
 
+workspace:
+  path: /drone/src
+
 steps:
   - name: Build
     pull: if-not-exists
@@ -30,4 +33,4 @@ volumes:
       path: /var/run/docker.sock
   - name: code
     host:
-      path: "$PWD"
+      path: /drone/src
