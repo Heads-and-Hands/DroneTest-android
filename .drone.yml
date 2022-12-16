@@ -5,6 +5,14 @@ name: default
 workspace:
   path: /drone/src
 
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
+  - name: code
+    host:
+      path: /drone/src
+
 steps:
   - name: Build
     pull: if-not-exists
@@ -12,6 +20,8 @@ steps:
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
+      - name: code
+        path: /home/gradle
     commands:
       - echo hello
       - docker build -t android-build:latest .
@@ -26,13 +36,5 @@ steps:
         path: /home/gradle
     commands:
       - ls -al /drone/src
-      - docker run --rm -v /drone/src:/home/gradle/ android-build ls -al /drone/src
-      - docker run --rm -v /drone/src:/home/gradle/ android-build gradle build
-
-volumes:
-  - name: dockersock
-    host:
-      path: /var/run/docker.sock
-  - name: code
-    host:
-      path: /drone/src
+      - docker run --rm -v code:/home/gradle android-build ls -al /home/gradle
+      - docker run --rm -v code:/home/gradle android-build gradle build
