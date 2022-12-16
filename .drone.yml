@@ -19,10 +19,15 @@ steps:
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
+      - name: code
+        path: /code
     commands:
-      - docker run --rm -v "$PWD":/home/gradle/ android-build gradle build
+      - docker run --rm -v "/code":/home/gradle/ android-build gradle build
 
 volumes:
   - name: dockersock
     host:
       path: /var/run/docker.sock
+  - name: code
+    host:
+      path: "$PWD"
