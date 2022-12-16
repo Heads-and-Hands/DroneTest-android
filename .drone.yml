@@ -16,32 +16,16 @@ steps:
       - echo hello
       - docker build -t android-build:latest .
 
-  - name: Check
-    pull: if-not-exists
-    image: docker:latest
-    volumes:
-      - name: dockersock
-        path: /var/run/docker.sock
-      - name: code
-        path: /code
-    commands:
-      - cd /drone/src && ls -al
-
   - name: Run
     pull: if-not-exists
     image: docker:latest
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
-      - name: code
-        path: /code
     commands:
-      - docker run --rm -v "/code":/home/gradle/ android-build gradle build
+      - docker run --rm -v "/drone/src":/home/gradle/ android-build gradle build
 
 volumes:
   - name: dockersock
     host:
       path: /var/run/docker.sock
-  - name: code
-    host:
-      path: /drone/src
