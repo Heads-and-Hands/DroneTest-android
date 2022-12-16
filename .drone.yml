@@ -16,6 +16,17 @@ steps:
       - echo hello
       - docker build -t android-build:latest .
 
+  - name: Check
+    pull: if-not-exists
+    image: docker:latest
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: code
+        path: /code
+    commands:
+      - cd /code && ls -al
+
   - name: Run
     pull: if-not-exists
     image: docker:latest
