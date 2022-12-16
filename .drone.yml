@@ -24,23 +24,4 @@ steps:
         path: /home/gradle
     commands:
       - docker build -t android-build:latest .
-
-  - name: Test
-    pull: if-not-exists
-    image: docker:latest
-    volumes:
-      - name: code
-        path: /home/gradle
-    commands:
-      - docker volume ls
-
-  - name: Run
-    pull: if-not-exists
-    image: docker:latest
-    volumes:
-      - name: dockersock
-        path: /var/run/docker.sock
-      - name: code
-        path: /home/gradle
-    commands:
       - docker run --rm android-build gradle build
