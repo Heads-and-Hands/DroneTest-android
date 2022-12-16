@@ -27,6 +27,7 @@ steps:
     commands:
       - ls -al /drone/src
       - docker run --rm android-build ls -al /home/gradle
+      - docker run --rm android-build ls -al /drone/src
       - docker run --rm android-build gradle build
 
 volumes:
