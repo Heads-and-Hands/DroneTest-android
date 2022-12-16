@@ -26,9 +26,8 @@ steps:
         path: /home/gradle
     commands:
       - ls -al /drone/src
-      - docker volume inspect code
-      - docker run --rm -v code:/home/gradle/ android-build ls -al /home/gradle
-      - docker run --rm -v code:/home/gradle/ android-build gradle build
+      - docker run --rm -v /drone/src:/home/gradle/ android-build ls -al /home/gradle
+      - docker run --rm -v /drone/src:/home/gradle/ android-build gradle build
 
 volumes:
   - name: dockersock
