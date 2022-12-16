@@ -37,5 +37,5 @@ steps:
     commands:
       - ls -al /drone/src
       - docker run --rm -v code:/home/gradle android-build ls -al /home/gradle
-      - docker run --rm -v code:/home/gradle android-build ls -al /home/gradle/.android
+      - docker run --rm -v code:/home/gradle android-build ls -al /home/gradle/.gradle
       - docker run --rm -v code:/home/gradle android-build gradle build
