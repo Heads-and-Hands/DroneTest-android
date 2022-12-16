@@ -24,4 +24,4 @@ steps:
         path: /home/gradle
     commands:
       - docker build -t android-build:latest .
-      - docker run --rm android-build gradle build
+      - docker run --rm -v /drone/src:/home/gradle android-build gradle build
