@@ -34,4 +34,4 @@ steps:
       - name: code
         path: /home/gradle
     commands:
-      - docker run --rm android-build gradle build
+      - gradle build
