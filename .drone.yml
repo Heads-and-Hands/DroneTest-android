@@ -23,11 +23,11 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
       - name: src
-        path: /home/gradle1
+        path: /home/gradle
     commands:
       - ls -al /drone/src
-      - docker run --rm android-build ls -al /home/gradle1
-      - docker run --rm android-build gradle build
+      - docker run --rm -v /drone/src:/home/gradle/ android-build ls -al /home/gradle
+      - docker run --rm -v /drone/src:/home/gradle/ android-build gradle build
 
 volumes:
   - name: dockersock
