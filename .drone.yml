@@ -24,6 +24,7 @@ steps:
         path: /home/gradle
     commands:
       - docker build -t android-build:latest .
+      - docker volume inspect code
       - docker run --rm android-build ls -al /home/gradle
 
   - name: Run
